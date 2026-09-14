@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import SplatterBackground from './components/SplatterBackground';
 import Header from './components/Header';
 import CategoryTabs from './components/CategoryTabs';
 import QuickFilter from './components/QuickFilter';
@@ -9,6 +8,7 @@ import ItemDetailModal from './components/ItemDetailModal';
 import FooterInfo from './components/FooterInfo';
 import { CATEGORIES, MENU_ITEMS } from './data/menuData';
 import { RefreshCcw } from 'lucide-react';
+import logoImg from './assets/logo.png';
 
 export default function App() {
   // Solo 3 apartados: "copas", "cocteles" y "cervezas" (iniciando en "copas")
@@ -36,10 +36,25 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-zinc-100 flex flex-col justify-between font-sans selection:bg-zinc-800 selection:text-white">
-      {/* Fondo liso oscuro sobrio */}
-      <SplatterBackground />
+      {/* Fondo absoluto que cubre toda la pantalla con el logo centrado */}
+      <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0 flex items-center justify-center">
+        {/* Resplandor ambiental de neón difuminado */}
+        <img
+          src={logoImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute w-[800px] h-[800px] object-contain blur-3xl opacity-25 mix-blend-screen select-none pointer-events-none"
+        />
+        {/* Silueta / Marca de agua del logo visible */}
+        <img
+          src={logoImg}
+          alt="Dalí Bar Fondo"
+          aria-hidden="true"
+          className="relative w-[300px] sm:w-[460px] md:w-[580px] object-contain opacity-15 mix-blend-screen select-none pointer-events-none"
+        />
+      </div>
 
-      {/* Contenedor Principal */}
+      {/* Contenedor Principal (Resto de la aplicación con relative z-10) */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 flex-1 flex flex-col">
         {/* Cabecera limpia con el logo */}
         <Header />
