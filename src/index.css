@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --logo-cyan: #00f0ff;
+    --logo-purple: #7b2cbf;
+    --logo-magenta: #ff0055;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #f4f4f5;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Neon Glow Script (Yellowtail / Pacifico) */
+.neon-glow-script {
+  font-family: 'Yellowtail', 'Pacifico', cursive;
+  color: #ffffff;
+  text-shadow:
+    0 0 3px #ffffff,
+    0 0 10px #ff0055,
+    0 0 20px rgba(255, 0, 85, 0.6);
+}
+
+.neon-glow-cyan {
+  color: #ffffff;
+  text-shadow:
+    0 0 3px #ffffff,
+    0 0 10px #00f0ff,
+    0 0 20px rgba(0, 240, 255, 0.6);
+}
+
+/* Gradient Border Helper calando el aro exterior del logo (Cian a Rojo/Magenta) */
+.gradient-ring-border {
+  position: relative;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.gradient-ring-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #00f0ff 0%, #7b2cbf 50%, #ff0055 100%);
+  z-index: -1;
+}
+
+/* Sober Frosted Glass */
+.frosted-glass {
+  background: rgba(10, 10, 12, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Leather Badge Trim */
+.leather-badge-trim {
+  background: linear-gradient(135deg, #2b1a05 0%, #120b02 100%);
+  border: 1px solid #c88a24;
+  box-shadow: 0 0 8px rgba(200, 138, 36, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f0ff 0%, #ff0055 100%);
+  border-radius: 3px;
+}
