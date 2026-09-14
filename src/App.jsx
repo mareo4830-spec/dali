@@ -16,15 +16,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Contador de elementos por cada uno de los 3 apartados
-  const itemCountMap = useMemo(() => {
-    return {
-      copas: MENU_ITEMS.filter((i) => i.category === 'copas').length,
-      cocteles: MENU_ITEMS.filter((i) => i.category === 'cocteles').length,
-      cervezas: MENU_ITEMS.filter((i) => i.category === 'cervezas').length,
-    };
-  }, []);
-
   // Filtrado reactivo de elementos por apartado y búsqueda
   const filteredItems = useMemo(() => {
     return MENU_ITEMS.filter((item) => {
@@ -63,14 +54,12 @@ export default function App() {
               setActiveCategory(cat);
               setSearchQuery('');
             }}
-            itemCountMap={itemCountMap}
           />
 
           {/* Buscador Rápido */}
           <QuickFilter
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
-            totalCount={filteredItems.length}
             activeFilterName={activeCategoryObj.label}
           />
 
@@ -84,10 +73,6 @@ export default function App() {
                 — {activeCategoryObj.subtitle}
               </span>
             </div>
-
-            <span className="font-sans text-xs text-zinc-500 font-medium">
-              {filteredItems.length} productos
-            </span>
           </div>
 
           {/* Lista de Elementos (Filas Limpias) */}
